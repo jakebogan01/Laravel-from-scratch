@@ -8,19 +8,10 @@
         <link rel="stylesheet" href="/app.css">
     </head>
     <body>
-        <article>
-            <h1><a href="/posts/my-first-post">My First Post</a></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos similique iusto fuga, laborum architecto temporibus, corrupti expedita nihil voluptate modi obcaecati libero recusandae? Suscipit quo exercitationem placeat molestiae eveniet enim in quisquam error et sint facere officia debitis quod modi obcaecati saepe culpa corrupti consectetur veniam fugiat dicta, harum laboriosam eius nemo. Sed, nesciunt illo? Consequuntur est aperiam doloribus omnis consequatur. Adipisci voluptatum, quia vero facilis quae ut aut perferendis est iste! Veritatis quos eum ipsam? Dolore voluptate quae beatae! Voluptas, qui, voluptatem esse rerum voluptatum praesentium iure labore libero a inventore fugiat, recusandae asperiores doloribus repudiandae odit sequi fugit!</p>
-        </article>
-
-        <article>
-            <h1><a href="/posts/my-second-post">My Second Post</a></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos similique iusto fuga, laborum architecto temporibus, corrupti expedita nihil voluptate modi obcaecati libero recusandae? Suscipit quo exercitationem placeat molestiae eveniet enim in quisquam error et sint facere officia debitis quod modi obcaecati saepe culpa corrupti consectetur veniam fugiat dicta, harum laboriosam eius nemo. Sed, nesciunt illo? Consequuntur est aperiam doloribus omnis consequatur. Adipisci voluptatum, quia vero facilis quae ut aut perferendis est iste! Veritatis quos eum ipsam? Dolore voluptate quae beatae! Voluptas, qui, voluptatem esse rerum voluptatum praesentium iure labore libero a inventore fugiat, recusandae asperiores doloribus repudiandae odit sequi fugit!</p>
-        </article>
-        
-        <article>
-            <h1><a href="/posts/my-third-post">My Third Post</a></h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos similique iusto fuga, laborum architecto temporibus, corrupti expedita nihil voluptate modi obcaecati libero recusandae? Suscipit quo exercitationem placeat molestiae eveniet enim in quisquam error et sint facere officia debitis quod modi obcaecati saepe culpa corrupti consectetur veniam fugiat dicta, harum laboriosam eius nemo. Sed, nesciunt illo? Consequuntur est aperiam doloribus omnis consequatur. Adipisci voluptatum, quia vero facilis quae ut aut perferendis est iste! Veritatis quos eum ipsam? Dolore voluptate quae beatae! Voluptas, qui, voluptatem esse rerum voluptatum praesentium iure labore libero a inventore fugiat, recusandae asperiores doloribus repudiandae odit sequi fugit!</p>
-        </article>
+        <?php foreach ($posts as $post) : ?>
+            <article>
+                <?= $post; ?>
+            </article>
+        <?php endforeach; ?>
     </body>
 </html>

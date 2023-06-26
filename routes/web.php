@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,29 +15,18 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts');
+    // fetch all posts in Post model
+    $posts = Post::all();
+
+    return view('posts', [ 'posts' => $posts ]);
 });
 
 // {post} is a wildcard
 Route::get('/posts/{post}', function ($slug) {
-    // get path to html resources/posts
-    $pathToPost = __DIR__ . "/../resources/posts/{$slug}.html";
-
-    // check if file exists if not redirect to home page
-    if (! file_exists($pathToPost)) {
-        // abort(404);
-        return redirect('/');
-    }
-
-    // cache the contents of the file for 20 minutes
-    $post = cache()->remember("posts.{$slug}", now()->addMinutes(20), function () use ($pathToPost) {
-        // fetch the contents of the file
-        return file_get_contents($pathToPost);
-    });
+    // calls find method in Post model
+    $post = Post::find($slug);
 
     return view('post', [ 'post' => $post ]);
 })
 // constrain the wildcard to only accept letters and dashes
 ->where('post', '[A-z-]+');
-// ->whereNumber('post');
-// ->whereAlpha('post');
