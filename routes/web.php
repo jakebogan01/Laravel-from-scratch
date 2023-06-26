@@ -28,12 +28,13 @@ Route::get('/posts/{post}', function ($slug) {
         return redirect('/');
     }
 
-    // get content of the file
-    $post = file_get_contents($pathToPost);
+    // cache the contents of the file for 20 minutes
+    $post = cache()->remember("posts.{$slug}", now()->addMinutes(20), function () use ($pathToPost) {
+        // fetch the contents of the file
+        return file_get_contents($pathToPost);
+    });
 
-    return view('post', [
-        'post' => $post
-    ]);
+    return view('post', [ 'post' => $post ]);
 })
 // constrain the wildcard to only accept letters and dashes
 ->where('post', '[A-z-]+');
