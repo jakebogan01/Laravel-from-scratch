@@ -34,4 +34,8 @@ Route::get('/posts/{post}', function ($slug) {
     return view('post', [
         'post' => $post
     ]);
-});
+})
+// constrain the wildcard to only accept letters and dashes
+->where('post', '[A-z-]+');
+// ->whereNumber('post');
+// ->whereAlpha('post');
