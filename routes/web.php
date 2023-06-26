@@ -15,18 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // fetch all posts in Post model
-    $posts = Post::all();
-
-    return view('posts', [ 'posts' => $posts ]);
+    return view('posts', [ 'posts' => Post::all() ]);
 });
 
 // {post} is a wildcard
 Route::get('/posts/{post}', function ($slug) {
-    // calls find method in Post model
-    $post = Post::find($slug);
-
-    return view('post', [ 'post' => $post ]);
+    return view('post', [ 'post' => Post::find($slug) ]);
 })
 // constrain the wildcard to only accept letters and dashes
 ->where('post', '[A-z-]+');
