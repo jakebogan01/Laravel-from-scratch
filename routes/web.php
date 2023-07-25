@@ -20,7 +20,5 @@ Route::get('/', function () {
 
 // {post} is a wildcard
 Route::get('/posts/{post}', function ($slug) {
-    return view('post', [ 'post' => Post::find($slug) ]);
-})
-// constrain the wildcard to only accept letters and dashes
-->where('post', '[A-z-]+');
+    return view('post', [ 'post' => Post::findOrFail($slug) ]);
+});
