@@ -13,5 +13,10 @@ class Post extends Model
     // everything is fillable except what is in the array
     protected $guarded = ['id'];
     // only what is in the array is fillable
-//    protected $fillable = ['title', 'excerpt', 'body'];
+    // protected $fillable = ['title', 'excerpt', 'body'];
+
+    public function category() {
+        // hasOne, hasMany, belongsTo, belongsToMany
+        return $this->belongsTo(Category::class);
+    }
 }
