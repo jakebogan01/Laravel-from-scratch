@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts', [ 'posts' => Post::all() ]);
+    // return category relationship from the post to prevent n+1 issues
+    return view('posts', [ 'posts' => Post::with('category')->get() ]);
 });
 
 // {post} is a wildcard
