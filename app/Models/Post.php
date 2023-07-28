@@ -20,8 +20,9 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function user() {
+    public function author() {
         // hasOne, hasMany, belongsTo, belongsToMany
-        return $this->belongsTo(User::class);
+        // user_id is the foreign key
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
