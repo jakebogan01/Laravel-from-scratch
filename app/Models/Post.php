@@ -15,6 +15,9 @@ class Post extends Model
     // only what is in the array is fillable
     // protected $fillable = ['title', 'excerpt', 'body'];
 
+    // To prevent n+1 issues, author and category will load with the post
+    protected $with = ['category', 'author'];
+
     public function category() {
         // hasOne, hasMany, belongsTo, belongsToMany
         return $this->belongsTo(Category::class);

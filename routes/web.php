@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return category relationship from the post to prevent n+1 issues, author is from the user model (post belongs to user)
-    return view('posts', [ 'posts' => Post::latest()->with('category', 'author')->get() ]);
+    return view('posts', [
+        // use without('category') to remove category relationship from the query
+        'posts' => Post::latest()->get()
+    ]);
 });
 
 // {post} is a wildcard
