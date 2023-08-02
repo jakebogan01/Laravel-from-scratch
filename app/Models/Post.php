@@ -18,6 +18,15 @@ class Post extends Model
     // To prevent n+1 issues, author and category will load with the post
     protected $with = ['category', 'author'];
 
+    // Custom query scope in case query gets more complex
+    public function scopeFilter($query, array $filters) { // Post::newquery->filter()
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            $query
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%');
+        });
+    }
+
     public function category() {
         // hasOne, hasMany, belongsTo, belongsToMany
         return $this->belongsTo(Category::class);
