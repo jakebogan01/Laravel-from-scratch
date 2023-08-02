@@ -22,7 +22,7 @@ Route::get('/', function () {
         'posts' => Post::latest()->get(),
         'categories' => Category::all()
     ]);
-});
+})->name('home');
 
 // {post} is a wildcard
 Route::get('/posts/{post:slug}', function (Post $post) {
@@ -35,7 +35,7 @@ Route::get('/categories/{category:slug}', function (Category $category) {
         'currentCategory' => $category, // 'currentCategory' is a custom variable name, can be anything
         'categories' => Category::all()
     ]);
-});
+})->name('category');
 
 Route::get('/authors/{author:username}', function (User $author) {
     return view('posts', [
