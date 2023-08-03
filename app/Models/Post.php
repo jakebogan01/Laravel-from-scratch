@@ -36,10 +36,8 @@ class Post extends Model
 
         // if author exists, then do this
         $query->when($filters['author'] ?? false, function($query, $author) {
-            $query->whereExists(function($query) use ($author) {
-                $query->from('users')
-                    ->whereColumn('users.id', 'posts.user_id')
-                    ->where('users.username', $author);
+            $query->whereHas('author', function($query) use ($author) {
+                $query->where('username', $author);
             });
         });
     }
