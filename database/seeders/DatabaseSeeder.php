@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
            'name' => 'Jake Bogan'
         ]);
         // associate posts with user above
-        Post::factory(5)->create([
+        Post::factory(12)->create([
             'user_id' => $user->id
         ]);
 //         $user = User::factory()->create();

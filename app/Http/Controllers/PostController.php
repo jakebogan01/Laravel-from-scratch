@@ -10,9 +10,17 @@ class PostController extends Controller
 {
     public function index()
     {
+        // view pagination results
+//        return Post::latest()->filter(
+//            request(['search', 'category', 'author'])
+//        )->paginate();
+
+        // use paginate or simplePaginate to view pagination results
         return view('posts.index', [
             // use without('category') to remove category relationship from the query
-            'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->get(),
+            'posts' => Post::latest()->filter(
+                request(['search', 'category', 'author'])
+            )->simplePaginate(6)->withQueryString()
         ]);
     }
 
