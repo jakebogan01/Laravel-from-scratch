@@ -20,10 +20,27 @@ class Post extends Model
 
     // Custom query scope in case query gets more complex
     public function scopeFilter($query, array $filters) { // Post::newquery->filter()
+        // if search exists, then do this
         $query->when($filters['search'] ?? false, function($query, $search) {
             $query
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('body', 'like', '%' . $search . '%');
+        });
+
+        // if category exists, then do this
+        $query->when($filters['category'] ?? false, function($query, $category) {
+            $query->whereHas('category', function($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        // if author exists, then do this
+        $query->when($filters['author'] ?? false, function($query, $author) {
+            $query->whereExists(function($query) use ($author) {
+                $query->from('users')
+                    ->whereColumn('users.id', 'posts.user_id')
+                    ->where('users.username', $author);
+            });
         });
     }
 
