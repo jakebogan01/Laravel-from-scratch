@@ -10,17 +10,15 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('posts', [
+        return view('posts.index', [
             // use without('category') to remove category relationship from the query
             'posts' => Post::latest()->filter(request(['search', 'category']))->get(),
-            'categories' => Category::all(),
-            'currentCategory' => Category::firstWhere('slug', request('category'))
         ]);
     }
 
     // {post} is a wildcard
     public function show(Post $post)
     {
-        return view('post', [ 'post' => $post ]);
+        return view('posts.show', [ 'post' => $post ]);
     }
 }
