@@ -53,4 +53,8 @@ class Post extends Model
         // user_id is the foreign key
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function comments() {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -1,14 +1,18 @@
+@props(['comment'])
+
 <article class="flex bg-gray-100 border border-gray-200 p-6 rounded-xl space-x-4">
     <div class="flex-shrink-0">
-        <img src="https://i.pravatar.cc/60" alt="" width="60" height="60" class="rounded-xl">
+        <img src="https://i.pravatar.cc/60?u={{ $comment->id }}" alt="" width="60" height="60" class="rounded-xl">
     </div>
 
     <div>
         <header class="mb-4">
-            <h3 class="font-bold">John Doe</h3>
-            <p class="text-xs">Posted <time>8 months ago</time></p>
+            <h3 class="font-bold">{{ $comment->author->username }}</h3>
+            <p class="text-xs">Posted <time>{{ $comment->created_at }}</time></p>
         </header>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam assumenda beatae eaque eos ex expedita libero, maiores maxime nemo neque nesciunt quod rerum. Architecto corporis, debitis ea explicabo iste nostrum vel vitae? Accusamus amet, asperiores aspernatur atque blanditiis cumque facilis, fugit hic impedit ipsam laudantium minima, necessitatibus nulla placeat reiciendis saepe soluta? Dicta molestiae nesciunt quod, quos sapiente voluptatibus. Corporis deserunt doloribus, eius eligendi error facere id inventore officiis placeat quia repudiandae rerum ut, voluptas. Adipisci aliquam autem blanditiis commodi consectetur consequuntur delectus dolore dolorem, eum, expedita facilis harum itaque laborum molestiae odit perspiciatis praesentium quibusdam, quis reiciendis sunt voluptatibus.</p>
+        <p>
+            {{ $comment->body }}
+        </p>
     </div>
 </article>
