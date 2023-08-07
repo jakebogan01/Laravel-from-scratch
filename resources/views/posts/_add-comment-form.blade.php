@@ -10,6 +10,7 @@
 
             <div class="mt-6">
                 <textarea name="body" id="body" cols="30" rows="5" class="w-full text-sm focus:outline-none focus:ring" placeholder="Quick, think of something to say!" required></textarea>
+
                 @error('body')
                 <span class="text-xs text-red-500">{{ $message }}</span>
                 @enderror
