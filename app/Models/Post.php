@@ -11,7 +11,7 @@ class Post extends Model
 
     // mass assignment
     // everything is fillable except what is in the array
-    protected $guarded = ['id'];
+//    protected $guarded = ['id'];
     // only what is in the array is fillable
     // protected $fillable = ['title', 'excerpt', 'body'];
 
