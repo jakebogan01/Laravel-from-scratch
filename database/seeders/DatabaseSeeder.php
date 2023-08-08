@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         ]);
         // associate posts with user above
         Post::factory(12)->create([
-            'user_id' => $user->id
+            'user_id' => $user->id,
         ]);
 //         $user = User::factory()->create();
 
