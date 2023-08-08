@@ -31,7 +31,19 @@
 
         <div class="mt-8 md:mt-0 flex items-center">
             @auth
-                <span class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->username }}</span>
+                <x-dropdown>
+                    <x-slot name="trigger">
+                        <button type="button" class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->username }}</button>
+                    </x-slot>
+
+                    <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                    <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">My Posts</x-dropdown-item>
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <x-dropdown-item href="#" x-data="{}" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</x-dropdown-item>
+                    </form>
+                </x-dropdown>
+
                 <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-3">
                     @csrf
                     <button type="submit" class="text-xs font-bold uppercase">Logout</button>

@@ -9,7 +9,7 @@
 
                 <div class="mb-6">
                     <label for="email" class="block mb-2 uppercase font-bold text-xs ~text-gray-700">Email</label>
-                    <input type="email" class="border border-gray-400 p-2 w-full" name="email" id="email" value="{{ old('email') }}" required>
+                    <input type="email" class="border border-gray-400 p-2 w-full" name="email" id="email" value="{{ old('email') }}" required autocomplete="username">
 
                     @error('email')
                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-6">
                     <label for="password" class="block mb-2 uppercase font-bold text-xs ~text-gray-700">Password</label>
-                    <input type="password" class="border border-gray-400 p-2 w-full" name="password" id="password" required>
+                    <input type="password" class="border border-gray-400 p-2 w-full" name="password" id="password" required autocomplete="new-password">
 
                     @error('password')
                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
