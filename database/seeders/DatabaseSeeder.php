@@ -16,17 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // removes error when seeding duplicates because unique has been assigned in the migrations
-        User::truncate();
-        Post::truncate();
-        Category::truncate();
+//        User::truncate();
+//        Post::truncate();
+//        Category::truncate();
 
         // make fake data for all user columns besides the ones below
         $user = User::factory()->create([
-           'name' => 'Jake Bogan'
+            'name' => 'Jake Bogan'
         ]);
-        // associate posts with user above
-        Post::factory(12)->create([
-            'user_id' => $user->id,
+
+        Post::factory(30)->create([
+            'user_id' => $user->id
         ]);
 //         $user = User::factory()->create();
 
