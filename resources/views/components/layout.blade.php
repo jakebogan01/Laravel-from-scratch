@@ -36,8 +36,11 @@
                         <button type="button" class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->username }}</button>
                     </x-slot>
 
-                    <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
-                    <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">My Posts</x-dropdown-item>
+                    @admin
+                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">My Posts</x-dropdown-item>
+                    @endadmin
+
                     <form method="POST" action="/logout">
                         @csrf
                         <x-dropdown-item href="#" x-data="{}" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</x-dropdown-item>
